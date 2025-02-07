@@ -2,22 +2,23 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const sqlite3 = require("sqlite3").verbose();
+const cors = require("cors");
 
 // Anslut till databas
 const db = new sqlite3.Database("./db/todoList.db");
 
 // Inställningar
 const app = express();
-const port = 3000;
+const port = 3001;
 
 // Middleware
 app.use(bodyParser.json());
+app.use(cors());
 
 // Valideringsfunktion för status
 const validStatus = ["ej påbörjad", "pågående", "avklarad"];
 
 // Routing
-
 // GET
 app.get("/todos", (req, res) => {
     db.all("SELECT * FROM todos", [], (err, rows) => {
@@ -75,5 +76,5 @@ app.put("/todos/:id", (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
+    console.log(`Listening on port ${port}`);
 });

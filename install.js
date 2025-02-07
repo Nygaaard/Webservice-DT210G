@@ -13,14 +13,14 @@ db.serialize(() => {
 
     //Tabell "todos"
     db.run(`
-            CREATE TABLE todos (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                title TEST NOT NULL,
-                description TEXT NOT NULL,
-                status TEXT DEFAULT 'ej påbörjad' NOT NULL,
-                posted TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
-            )
-        `)
+        CREATE TABLE todos (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            title TEST NOT NULL,
+            description TEXT NOT NULL,
+            status TEXT DEFAULT 'ej påbörjad' NOT NULL,
+            posted TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
+        )
+    `)
 })
 
 db.close();
